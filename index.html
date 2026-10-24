@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title id="doc-title">Muhammad Rizqi - Kartu Nama Digital</title>
+    <title id="doc-title">Kartu Nama Digital</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -143,7 +144,7 @@
             position: fixed;
             inset: 0;
             background-image: linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
-                              linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+                linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
             background-size: 32px 32px;
             z-index: 0;
             pointer-events: none;
@@ -202,9 +203,17 @@
         }
 
         @keyframes floatMesh {
-            0% { transform: translate(10vw, 10vh) rotate(0deg) scale(1); }
-            50% { transform: translate(50vw, 40vh) rotate(180deg) scale(1.2); }
-            100% { transform: translate(20vw, 70vh) rotate(360deg) scale(0.9); }
+            0% {
+                transform: translate(10vw, 10vh) rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: translate(50vw, 40vh) rotate(180deg) scale(1.2);
+            }
+
+            100% {
+                transform: translate(20vw, 70vh) rotate(360deg) scale(0.9);
+            }
         }
 
         /* --- CONTAINER UTAMA KARTU --- */
@@ -402,7 +411,7 @@
         .link-btn:hover {
             border-color: var(--accent-primary);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         .link-btn:active {
@@ -433,11 +442,30 @@
         }
 
         /* Brand Colors */
-        .wa-bg { background: rgba(37, 211, 102, 0.15); color: #25d366; }
-        .ig-bg { background: rgba(225, 48, 108, 0.15); color: #e1306c; }
-        .tt-bg { background: rgba(255, 255, 255, 0.15); color: var(--text-main); }
-        .web-bg { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
-        .mail-bg { background: rgba(250, 204, 21, 0.15); color: #facc15; }
+        .wa-bg {
+            background: rgba(37, 211, 102, 0.15);
+            color: #25d366;
+        }
+
+        .ig-bg {
+            background: rgba(225, 48, 108, 0.15);
+            color: #e1306c;
+        }
+
+        .tt-bg {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--text-main);
+        }
+
+        .web-bg {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        .mail-bg {
+            background: rgba(250, 204, 21, 0.15);
+            color: #facc15;
+        }
 
         .footer {
             margin-top: 26px;
@@ -870,7 +898,8 @@
 
         <!-- Foto Profil -->
         <div class="profile-img-container">
-            <img id="display-avatar" src="https://cdn.phototourl.com/member/2026-10-22-7ac54029-1946-4d0f-8af2-59a64d05371d.jpg"
+            <img id="display-avatar"
+                src="https://cdn.phototourl.com/member/2026-10-22-7ac54029-1946-4d0f-8af2-59a64d05371d.jpg"
                 alt="Foto Profil" class="profile-img"
                 onerror="this.src='https://placehold.co/128x128/6366f1/ffffff?text=User'">
         </div>
@@ -885,7 +914,7 @@
 
         <!-- Bio Profil -->
         <p class="bio" id="display-bio">Mahasiswa Global Institute
-Kasir Finance & Marketing</p>
+            Kasir Finance & Marketing</p>
 
         <!-- Akses Cepat (Quick Actions) -->
         <div class="quick-actions">
@@ -976,7 +1005,8 @@ Kasir Finance & Marketing</p>
         <div class="modal-card">
             <div class="modal-header">
                 <div class="modal-title">
-                    <i class="fa-solid fa-sliders" style="color: var(--accent-primary);"></i> Pengaturan Profil & Tampilan
+                    <i class="fa-solid fa-sliders" style="color: var(--accent-primary);"></i> Pengaturan Profil &
+                    Tampilan
                 </div>
                 <button class="modal-close" onclick="closeEditModal()">
                     <i class="fa-solid fa-xmark"></i>
@@ -999,10 +1029,12 @@ Kasir Finance & Marketing</p>
                             <img id="modal-avatar-preview" class="avatar-preview-mini" src="" alt="Mini Preview">
                             <div class="upload-btn-wrapper">
                                 <button class="upload-btn"><i class="fa-solid fa-upload"></i> Unggah File</button>
-                                <input type="file" id="input-avatar-file" accept="image/*" onchange="handleFileUpload(event)">
+                                <input type="file" id="input-avatar-file" accept="image/*"
+                                    onchange="handleFileUpload(event)">
                             </div>
                         </div>
-                        <input type="text" id="input-avatar" class="form-control" style="margin-top:6px;" placeholder="Atau tempel URL gambar..." oninput="updateAvatarPreview(this.value)">
+                        <input type="text" id="input-avatar" class="form-control" style="margin-top:6px;"
+                            placeholder="Atau tempel URL gambar..." oninput="updateAvatarPreview(this.value)">
                     </div>
 
                     <div class="form-group">
@@ -1017,7 +1049,8 @@ Kasir Finance & Marketing</p>
 
                     <div class="form-group">
                         <label><i class="fa-solid fa-id-card"></i> Bio Profil</label>
-                        <textarea id="input-bio" class="form-control" placeholder="Tulis deskripsi bio singkat..."></textarea>
+                        <textarea id="input-bio" class="form-control"
+                            placeholder="Tulis deskripsi bio singkat..."></textarea>
                     </div>
 
                     <div class="form-group">
@@ -1037,12 +1070,14 @@ Kasir Finance & Marketing</p>
 
                     <div class="form-group">
                         <label><i class="fa-brands fa-instagram"></i> Link Instagram URL</label>
-                        <input type="text" id="input-ig" class="form-control" placeholder="https://instagram.com/username">
+                        <input type="text" id="input-ig" class="form-control"
+                            placeholder="https://instagram.com/username">
                     </div>
 
                     <div class="form-group">
                         <label><i class="fa-brands fa-tiktok"></i> Link TikTok URL</label>
-                        <input type="text" id="input-tt" class="form-control" placeholder="https://tiktok.com/@username">
+                        <input type="text" id="input-tt" class="form-control"
+                            placeholder="https://tiktok.com/@username">
                     </div>
 
                     <div class="form-group">
@@ -1063,23 +1098,28 @@ Kasir Finance & Marketing</p>
                     </label>
                     <div class="theme-picker-grid">
                         <div class="theme-card" onclick="selectTheme('indigo')" id="theme-card-indigo">
-                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #6366f1, #a855f7);"></div>
+                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #6366f1, #a855f7);">
+                            </div>
                             <span>Neon Indigo</span>
                         </div>
                         <div class="theme-card" onclick="selectTheme('emerald')" id="theme-card-emerald">
-                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #10b981, #06b6d4);"></div>
+                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #10b981, #06b6d4);">
+                            </div>
                             <span>Cyber Emerald</span>
                         </div>
                         <div class="theme-card" onclick="selectTheme('sunset')" id="theme-card-sunset">
-                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #f97316, #ec4899);"></div>
+                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #f97316, #ec4899);">
+                            </div>
                             <span>Sunset Gold</span>
                         </div>
                         <div class="theme-card" onclick="selectTheme('ocean')" id="theme-card-ocean">
-                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #0284c7, #2563eb);"></div>
+                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #0284c7, #2563eb);">
+                            </div>
                             <span>Ocean Mesh</span>
                         </div>
                         <div class="theme-card" onclick="selectTheme('light')" id="theme-card-light">
-                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #4f46e5, #9333ea);"></div>
+                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #4f46e5, #9333ea);">
+                            </div>
                             <span>Minimal Frost</span>
                         </div>
                     </div>
@@ -1092,19 +1132,23 @@ Kasir Finance & Marketing</p>
                     </label>
                     <div class="graphic-options">
                         <div class="graphic-item" onclick="toggleGraphic('particles')">
-                            <label><i class="fa-solid fa-sparkles" style="color:var(--accent-primary);"></i> Canvas Partikel Bintang</label>
+                            <label><i class="fa-solid fa-sparkles" style="color:var(--accent-primary);"></i> Canvas
+                                Partikel Bintang</label>
                             <input type="checkbox" id="chk-particles" checked>
                         </div>
                         <div class="graphic-item" onclick="toggleGraphic('glow')">
-                            <label><i class="fa-solid fa-circle-radial" style="color:var(--accent-primary);"></i> Ambient Blur Glow</label>
+                            <label><i class="fa-solid fa-circle-radial" style="color:var(--accent-primary);"></i>
+                                Ambient Blur Glow</label>
                             <input type="checkbox" id="chk-glow" checked>
                         </div>
                         <div class="graphic-item" onclick="toggleGraphic('grid')">
-                            <label><i class="fa-solid fa-border-all" style="color:var(--accent-primary);"></i> Cyber Grid Pattern</label>
+                            <label><i class="fa-solid fa-border-all" style="color:var(--accent-primary);"></i> Cyber
+                                Grid Pattern</label>
                             <input type="checkbox" id="chk-grid">
                         </div>
                         <div class="graphic-item" onclick="toggleGraphic('mesh')">
-                            <label><i class="fa-solid fa-wave-square" style="color:var(--accent-primary);"></i> Dynamic Mesh Fluid Blob</label>
+                            <label><i class="fa-solid fa-wave-square" style="color:var(--accent-primary);"></i> Dynamic
+                                Mesh Fluid Blob</label>
                             <input type="checkbox" id="chk-mesh">
                         </div>
                     </div>
@@ -1216,7 +1260,7 @@ Kasir Finance & Marketing</p>
             } else {
                 document.documentElement.setAttribute('data-theme', themeName);
             }
-            
+
             // Highlight Selected Theme Card
             document.querySelectorAll('.theme-card').forEach(card => card.classList.remove('active'));
             const activeCard = document.getElementById(`theme-card-${themeName}`);
@@ -1303,7 +1347,7 @@ Kasir Finance & Marketing</p>
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     const base64Image = e.target.result;
                     document.getElementById('input-avatar').value = base64Image;
                     document.getElementById('modal-avatar-preview').src = base64Image;
@@ -1328,7 +1372,7 @@ Kasir Finance & Marketing</p>
 
             // Save state
             localStorage.setItem('digital_card_profile_v2', JSON.stringify(currentProfile));
-            
+
             renderProfile();
             closeEditModal();
             showToast("Perubahan berhasil disimpan!");
@@ -1349,7 +1393,7 @@ Kasir Finance & Marketing</p>
 
             window.location.href = "mailto:" + targetEmail;
 
-            setTimeout(function() {
+            setTimeout(function () {
                 if (Date.now() - start < 1000) {
                     window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${targetEmail}`, '_blank');
                 }
@@ -1370,7 +1414,7 @@ Kasir Finance & Marketing</p>
                 navigator.share({
                     title: `${currentProfile.name} - Kartu Nama Digital`,
                     url: window.location.href
-                }).catch(() => {});
+                }).catch(() => { });
             } else {
                 navigator.clipboard.writeText(window.location.href).then(() => {
                     showToast("Tautan kartu berhasil disalin!");
