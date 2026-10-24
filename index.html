@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title id="doc-title">Muhammad Rizqi - Kartu Nama Digital</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* --- TEMA WARNA & CSS VARIABLES --- */
+        :root {
+            --bg-main: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.65);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-primary: #6366f1;
+            --accent-secondary: #a855f7;
+            --accent-gradient: linear-gradient(135deg, #6366f1, #a855f7);
+            --tag-bg: rgba(99, 102, 241, 0.15);
+            --tag-border: rgba(99, 102, 241, 0.3);
+            --tag-text: #818cf8;
+            --glow-1: rgba(99, 102, 241, 0.35);
+            --glow-2: rgba(168, 85, 247, 0.3);
+            --grid-color: rgba(255, 255, 255, 0.03);
+            --btn-bg: rgba(255, 255, 255, 0.06);
+            --btn-border: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Tema: Cyber Emerald */
+        [data-theme="emerald"] {
+            --bg-main: #022c22;
+            --card-bg: rgba(6, 78, 59, 0.55);
+            --card-border: rgba(52, 211, 153, 0.2);
+            --text-main: #ecfdf5;
+            --text-muted: #6ee7b7;
+            --accent-primary: #10b981;
+            --accent-secondary: #06b6d4;
+            --accent-gradient: linear-gradient(135deg, #10b981, #06b6d4);
+            --tag-bg: rgba(16, 185, 129, 0.15);
+            --tag-border: rgba(16, 185, 129, 0.3);
+            --tag-text: #34d399;
+            --glow-1: rgba(16, 185, 129, 0.35);
+            --glow-2: rgba(6, 182, 212, 0.3);
+            --grid-color: rgba(52, 211, 153, 0.04);
+        }
+
+        /* Tema: Sunset Gold */
+        [data-theme="sunset"] {
+            --bg-main: #1c100b;
+            --card-bg: rgba(67, 20, 7, 0.55);
+            --card-border: rgba(251, 146, 60, 0.2);
+            --text-main: #fff7ed;
+            --text-muted: #fdba74;
+            --accent-primary: #f97316;
+            --accent-secondary: #ec4899;
+            --accent-gradient: linear-gradient(135deg, #f97316, #ec4899);
+            --tag-bg: rgba(249, 115, 22, 0.15);
+            --tag-border: rgba(249, 115, 22, 0.3);
+            --tag-text: #fb923c;
+            --glow-1: rgba(249, 115, 22, 0.35);
+            --glow-2: rgba(236, 72, 153, 0.3);
+            --grid-color: rgba(251, 146, 60, 0.04);
+        }
+
+        /* Tema: Ocean Mesh */
+        [data-theme="ocean"] {
+            --bg-main: #0c1427;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --card-border: rgba(56, 189, 248, 0.25);
+            --text-main: #f0f9ff;
+            --text-muted: #7dd3fc;
+            --accent-primary: #0284c7;
+            --accent-secondary: #2563eb;
+            --accent-gradient: linear-gradient(135deg, #0284c7, #2563eb);
+            --tag-bg: rgba(2, 132, 199, 0.15);
+            --tag-border: rgba(2, 132, 199, 0.3);
+            --tag-text: #38bdf8;
+            --glow-1: rgba(2, 132, 199, 0.4);
+            --glow-2: rgba(37, 99, 235, 0.35);
+            --grid-color: rgba(56, 189, 248, 0.04);
+        }
+
+        /* Tema: Minimal Light Frost */
+        [data-theme="light"] {
+            --bg-main: #f1f5f9;
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --card-border: rgba(203, 213, 225, 0.8);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent-primary: #4f46e5;
+            --accent-secondary: #7c3aed;
+            --accent-gradient: linear-gradient(135deg, #4f46e5, #7c3aed);
+            --tag-bg: rgba(79, 70, 229, 0.1);
+            --tag-border: rgba(79, 70, 229, 0.2);
+            --tag-text: #4f46e5;
+            --glow-1: rgba(99, 102, 241, 0.18);
+            --glow-2: rgba(168, 85, 247, 0.15);
+            --grid-color: rgba(0, 0, 0, 0.03);
+            --btn-bg: rgba(241, 245, 249, 0.8);
+            --btn-border: rgba(203, 213, 225, 0.6);
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 16px;
+            position: relative;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        /* --- GRAFIK LATAR BELAKANG DYNAMIS --- */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bg-grid-pattern {
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+                              linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+            background-size: 32px 32px;
+            z-index: 0;
+            pointer-events: none;
+            display: none;
+        }
+
+        .bg-grid-pattern.active {
+            display: block;
+        }
+
+        .bg-glow-1 {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, var(--glow-1) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, var(--glow-2) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        /* Mesh Fluid Blob */
+        .mesh-blob {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            background: var(--accent-gradient);
+            filter: blur(80px);
+            opacity: 0.25;
+            z-index: 0;
+            pointer-events: none;
+            animation: floatMesh 12s infinite ease-in-out alternate;
+            display: none;
+        }
+
+        .mesh-blob.active {
+            display: block;
+        }
+
+        @keyframes floatMesh {
+            0% { transform: translate(10vw, 10vh) rotate(0deg) scale(1); }
+            50% { transform: translate(50vw, 40vh) rotate(180deg) scale(1.2); }
+            100% { transform: translate(20vw, 70vh) rotate(360deg) scale(0.9); }
+        }
+
+        /* --- CONTAINER UTAMA KARTU --- */
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: var(--card-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 32px 24px 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin: auto;
+            transition: all 0.3s ease;
+        }
+
+        /* Top Action Group */
+        .top-btn-group {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .top-action-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .top-action-btn:hover {
+            background: var(--accent-primary);
+            color: #ffffff;
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        .top-action-btn:active {
+            transform: scale(0.92);
+        }
+
+        /* Profile Avatar */
+        .profile-img-container {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 18px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 24px var(--glow-1);
+            background: #1e293b;
+        }
+
+        .profile-img-container::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            padding: 4px;
+            background: var(--accent-gradient);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .name-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+            word-break: break-word;
+        }
+
+        .verified-badge {
+            color: #38bdf8;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .role-tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            color: var(--tag-text);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .bio {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin-bottom: 22px;
+            line-height: 1.55;
+            padding: 0 8px;
+            font-weight: 400;
+            white-space: pre-line;
+        }
+
+        /* Quick Action Grid */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            padding: 12px 8px;
+            border-radius: 16px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-item i {
+            font-size: 18px;
+        }
+
+        .action-item:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .action-item:active {
+            transform: scale(0.95);
+        }
+
+        /* Links List */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            padding: 14px 18px;
+            border-radius: 16px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .link-btn:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .link-btn:active {
+            transform: scale(0.98);
+        }
+
+        .link-btn .left-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .icon-box {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .link-btn .arrow-icon {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Brand Colors */
+        .wa-bg { background: rgba(37, 211, 102, 0.15); color: #25d366; }
+        .ig-bg { background: rgba(225, 48, 108, 0.15); color: #e1306c; }
+        .tt-bg { background: rgba(255, 255, 255, 0.15); color: var(--text-main); }
+        .web-bg { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+        .mail-bg { background: rgba(250, 204, 21, 0.15); color: #facc15; }
+
+        .footer {
+            margin-top: 26px;
+            padding-top: 16px;
+            border-top: 1px solid var(--btn-border);
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* --- FLOATING BUTTONS --- */
+        .floating-btn-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .floating-edit-btn {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px var(--glow-1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .floating-edit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px var(--glow-1);
+        }
+
+        .floating-edit-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* --- MODAL DIALOG --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background: var(--bg-main);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 460px;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: var(--text-main);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--btn-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-title {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 50%;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--text-main);
+        }
+
+        /* Tab Controls inside Modal */
+        .modal-tabs {
+            display: flex;
+            padding: 8px 20px 0;
+            gap: 8px;
+            border-bottom: 1px solid var(--btn-border);
+        }
+
+        .tab-btn {
+            padding: 8px 14px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-muted);
+            border: none;
+            background: transparent;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-primary);
+            border-bottom-color: var(--accent-primary);
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .tab-content {
+            display: none;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .tab-content.active {
+            display: flex;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .form-control {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--btn-border);
+            border-radius: 12px;
+            padding: 10px 14px;
+            color: var(--text-main);
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        [data-theme="light"] .form-control {
+            background: #ffffff;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-primary);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        /* Avatar Upload Grid */
+        .avatar-upload-box {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .avatar-preview-mini {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-primary);
+            flex-shrink: 0;
+        }
+
+        .upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .upload-btn {
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            color: var(--text-main);
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .upload-btn-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Grid Theme Option Picker */
+        .theme-picker-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .theme-card {
+            border: 2px solid var(--btn-border);
+            border-radius: 14px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--btn-bg);
+        }
+
+        .theme-card.active {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 12px var(--glow-1);
+        }
+
+        .theme-color-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .theme-card span {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Graphics Switcher Options */
+        .graphic-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .graphic-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            cursor: pointer;
+        }
+
+        .graphic-item label {
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--btn-border);
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            box-shadow: 0 4px 12px var(--glow-1);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        .btn-secondary {
+            background: var(--btn-bg);
+            color: var(--text-muted);
+            border: 1px solid var(--btn-border);
+        }
+
+        .btn-secondary:hover {
+            color: var(--text-main);
+        }
+
+        /* --- TOAST NOTIFICATION --- */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-main);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 28px 18px 20px;
+            }
+
+            .floating-edit-btn span {
+                display: none;
+            }
+
+            .floating-edit-btn {
+                padding: 14px;
+                border-radius: 50%;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .theme-picker-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Dynamic Canvas & Background Graphics -->
+    <canvas id="particle-canvas"></canvas>
+    <div id="bg-grid" class="bg-grid-pattern"></div>
+    <div id="bg-glow1" class="bg-glow-1"></div>
+    <div id="bg-glow2" class="bg-glow-2"></div>
+    <div id="bg-mesh" class="mesh-blob"></div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+        <!-- Top Action Buttons -->
+        <div class="top-btn-group">
+            <button class="top-action-btn" onclick="openEditModal('theme')" title="Kustomisasi Tema">
+                <i class="fa-solid fa-palette"></i>
+            </button>
+            <button class="top-action-btn" onclick="openEditModal('profile')" title="Edit Profil">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button class="top-action-btn" onclick="copyProfileLink()" title="Bagikan Profil">
+                <i class="fa-solid fa-share-nodes"></i>
+            </button>
+        </div>
+
+        <!-- Foto Profil -->
+        <div class="profile-img-container">
+            <img id="display-avatar" src="https://cdn.phototourl.com/member/2026-10-22-7ac54029-1946-4d0f-8af2-59a64d05371d.jpg"
+                alt="Foto Profil" class="profile-img"
+                onerror="this.src='https://placehold.co/128x128/6366f1/ffffff?text=User'">
+        </div>
+
+        <!-- Nama & Verified Badge -->
+        <div class="name-wrapper">
+            <h1 class="name" id="display-name">Muhammad Rizqi</h1>
+            <i class="fa-solid fa-circle-check verified-badge" title="Terverifikasi"></i>
+        </div>
+
+        <div class="role-tag" id="display-tag">Global Institute</div>
+
+        <!-- Bio Profil -->
+        <p class="bio" id="display-bio">Mahasiswa Global Institute
+Kasir Finance & Marketing</p>
+
+        <!-- Akses Cepat (Quick Actions) -->
+        <div class="quick-actions">
+            <a id="btn-wa-action" href="https://wa.me/6289525935034" target="_blank" class="action-item">
+                <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
+                <span>Chat WA</span>
+            </a>
+            <a id="btn-phone-action" href="tel:6289525935034" class="action-item">
+                <i class="fa-solid fa-phone" style="color: #38bdf8;"></i>
+                <span>Telepon</span>
+            </a>
+            <div class="action-item" onclick="copyEmail()">
+                <i class="fa-solid fa-copy" style="color: #facc15;"></i>
+                <span>Salin Email</span>
+            </div>
+        </div>
+
+        <!-- Tautan Utama -->
+        <div class="links-container">
+            <a id="btn-wa-link" href="https://wa.me/6289525935034" target="_blank" class="link-btn">
+                <div class="left-content">
+                    <div class="icon-box wa-bg">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <span>WhatsApp Kami</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <a id="btn-ig-link" href="https://www.instagram.com/rizqi067" target="_blank" class="link-btn">
+                <div class="left-content">
+                    <div class="icon-box ig-bg">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <span>Instagram</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <a id="btn-tt-link" href="https://tiktok.com/@kinerizqi" target="_blank" class="link-btn">
+                <div class="left-content">
+                    <div class="icon-box tt-bg">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </div>
+                    <span>TikTok</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <a id="btn-web-link" href="https://mitrarating.com" target="_blank" class="link-btn">
+                <div class="left-content">
+                    <div class="icon-box web-bg">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <span>Website Resmi</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <div class="link-btn" onclick="openEmail()">
+                <div class="left-content">
+                    <div class="icon-box mail-bg">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <span>Kirim Email</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span id="display-footer-left">&copy; 2026 Kartu Nama Digital</span>
+            <span id="display-footer-right" style="font-weight: 700; color: var(--accent-primary);">Rizqi Profile</span>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="floating-btn-container">
+        <button class="floating-edit-btn" onclick="openEditModal('profile')">
+            <i class="fa-solid fa-sliders"></i>
+            <span>Edit Profil & Tema</span>
+        </button>
+    </div>
+
+    <!-- MODAL EDIT PROFIL & TEMA -->
+    <div id="edit-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-sliders" style="color: var(--accent-primary);"></i> Pengaturan Profil & Tampilan
+                </div>
+                <button class="modal-close" onclick="closeEditModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Navigation Tabs -->
+            <div class="modal-tabs">
+                <button class="tab-btn active" id="tab-btn-profile" onclick="switchTab('profile')">Data Profil</button>
+                <button class="tab-btn" id="tab-btn-theme" onclick="switchTab('theme')">Tema Warna</button>
+                <button class="tab-btn" id="tab-btn-graphics" onclick="switchTab('graphics')">Grafik Latar</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- TAB 1: DATA PROFIL -->
+                <div id="tab-profile" class="tab-content active">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-image"></i> Foto Profil (URL / Upload)</label>
+                        <div class="avatar-upload-box">
+                            <img id="modal-avatar-preview" class="avatar-preview-mini" src="" alt="Mini Preview">
+                            <div class="upload-btn-wrapper">
+                                <button class="upload-btn"><i class="fa-solid fa-upload"></i> Unggah File</button>
+                                <input type="file" id="input-avatar-file" accept="image/*" onchange="handleFileUpload(event)">
+                            </div>
+                        </div>
+                        <input type="text" id="input-avatar" class="form-control" style="margin-top:6px;" placeholder="Atau tempel URL gambar..." oninput="updateAvatarPreview(this.value)">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-user"></i> Nama Lengkap</label>
+                        <input type="text" id="input-name" class="form-control" placeholder="Contoh: Nama Anda">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-building"></i> Tag / Instansi / Jabatan</label>
+                        <input type="text" id="input-tag" class="form-control" placeholder="Contoh: Manager Sales">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-id-card"></i> Bio Profil</label>
+                        <textarea id="input-bio" class="form-control" placeholder="Tulis deskripsi bio singkat..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-brands fa-whatsapp"></i> Nomor WhatsApp (Contoh: 628123456789)</label>
+                        <input type="text" id="input-wa" class="form-control" placeholder="628xxx">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-phone"></i> Nomor Telepon Call</label>
+                        <input type="text" id="input-phone" class="form-control" placeholder="628xxx">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-envelope"></i> Alamat Email</label>
+                        <input type="email" id="input-email" class="form-control" placeholder="email@domain.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-brands fa-instagram"></i> Link Instagram URL</label>
+                        <input type="text" id="input-ig" class="form-control" placeholder="https://instagram.com/username">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-brands fa-tiktok"></i> Link TikTok URL</label>
+                        <input type="text" id="input-tt" class="form-control" placeholder="https://tiktok.com/@username">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-globe"></i> Link Website Resmi URL</label>
+                        <input type="text" id="input-web" class="form-control" placeholder="https://website.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-copyright"></i> Teks Footer Brand</label>
+                        <input type="text" id="input-brand" class="form-control" placeholder="Rizqi Profile">
+                    </div>
+                </div>
+
+                <!-- TAB 2: TEMA WARNA -->
+                <div id="tab-theme" class="tab-content">
+                    <label style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px;">
+                        Pilih Skema Warna Kartu:
+                    </label>
+                    <div class="theme-picker-grid">
+                        <div class="theme-card" onclick="selectTheme('indigo')" id="theme-card-indigo">
+                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #6366f1, #a855f7);"></div>
+                            <span>Neon Indigo</span>
+                        </div>
+                        <div class="theme-card" onclick="selectTheme('emerald')" id="theme-card-emerald">
+                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #10b981, #06b6d4);"></div>
+                            <span>Cyber Emerald</span>
+                        </div>
+                        <div class="theme-card" onclick="selectTheme('sunset')" id="theme-card-sunset">
+                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #f97316, #ec4899);"></div>
+                            <span>Sunset Gold</span>
+                        </div>
+                        <div class="theme-card" onclick="selectTheme('ocean')" id="theme-card-ocean">
+                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #0284c7, #2563eb);"></div>
+                            <span>Ocean Mesh</span>
+                        </div>
+                        <div class="theme-card" onclick="selectTheme('light')" id="theme-card-light">
+                            <div class="theme-color-dot" style="background: linear-gradient(135deg, #4f46e5, #9333ea);"></div>
+                            <span>Minimal Frost</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: GRAFIK LATAR BELAKANG -->
+                <div id="tab-graphics" class="tab-content">
+                    <label style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px;">
+                        Aktifkan Elemen Latar Belakang:
+                    </label>
+                    <div class="graphic-options">
+                        <div class="graphic-item" onclick="toggleGraphic('particles')">
+                            <label><i class="fa-solid fa-sparkles" style="color:var(--accent-primary);"></i> Canvas Partikel Bintang</label>
+                            <input type="checkbox" id="chk-particles" checked>
+                        </div>
+                        <div class="graphic-item" onclick="toggleGraphic('glow')">
+                            <label><i class="fa-solid fa-circle-radial" style="color:var(--accent-primary);"></i> Ambient Blur Glow</label>
+                            <input type="checkbox" id="chk-glow" checked>
+                        </div>
+                        <div class="graphic-item" onclick="toggleGraphic('grid')">
+                            <label><i class="fa-solid fa-border-all" style="color:var(--accent-primary);"></i> Cyber Grid Pattern</label>
+                            <input type="checkbox" id="chk-grid">
+                        </div>
+                        <div class="graphic-item" onclick="toggleGraphic('mesh')">
+                            <label><i class="fa-solid fa-wave-square" style="color:var(--accent-primary);"></i> Dynamic Mesh Fluid Blob</label>
+                            <input type="checkbox" id="chk-mesh">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="resetToDefault()">
+                    <i class="fa-solid fa-rotate-left"></i> Reset
+                </button>
+                <button class="btn btn-primary" onclick="saveProfileChanges()">
+                    <i class="fa-solid fa-check"></i> Simpan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-circle-check" style="color: #4ade80;"></i>
+        <span id="toast-msg">Notifikasi</span>
+    </div>
+
+    <!-- SCRIPT JAVASCRIPT PERBAIKAN EMAIL & DYNAMIC MANAGEMENT -->
+    <script>
+        // Data Default Profile
+        const DEFAULT_DATA = {
+            avatar: "https://cdn.phototourl.com/member/2026-10-22-7ac54029-1946-4d0f-8af2-59a64d05371d.jpg",
+            name: "Muhammad Rizqi",
+            tag: "Global Institute",
+            bio: "Mahasiswa Global Institute\nKasir Finance & Marketing",
+            wa: "6289525935034",
+            phone: "6289525935034",
+            email: "kinerizqi30@gmail.com",
+            ig: "https://www.instagram.com/rizqi067?mdxt=ZzlraWNpenNyNnV0",
+            tt: "https://tiktok.com/@kinerizqi",
+            web: "https://mitrarating.com",
+            brand: "Rizqi Profile",
+            theme: "indigo",
+            graphics: {
+                particles: true,
+                glow: true,
+                grid: false,
+                mesh: false
+            }
+        };
+
+        let currentProfile = { ...DEFAULT_DATA };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSavedProfile();
+            renderProfile();
+            initParticles();
+        });
+
+        function loadSavedProfile() {
+            const saved = localStorage.getItem('digital_card_profile_v2');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    currentProfile = {
+                        ...DEFAULT_DATA,
+                        ...parsed,
+                        graphics: { ...DEFAULT_DATA.graphics, ...(parsed.graphics || {}) }
+                    };
+                } catch (e) {
+                    console.error("Gagal membaca localStorage", e);
+                }
+            }
+        }
+
+        function renderProfile() {
+            // Document Title
+            document.title = `${currentProfile.name} - Kartu Nama Digital`;
+            document.getElementById('doc-title').innerText = `${currentProfile.name} - Kartu Nama Digital`;
+
+            // Profile Info
+            document.getElementById('display-avatar').src = currentProfile.avatar || DEFAULT_DATA.avatar;
+            document.getElementById('display-name').innerText = currentProfile.name || DEFAULT_DATA.name;
+            document.getElementById('display-tag').innerText = currentProfile.tag || DEFAULT_DATA.tag;
+            document.getElementById('display-bio').innerText = currentProfile.bio || DEFAULT_DATA.bio;
+
+            // Links
+            const cleanWa = (currentProfile.wa || '').replace(/[^0-9]/g, '');
+            document.getElementById('btn-wa-action').href = `https://wa.me/${cleanWa}`;
+            document.getElementById('btn-wa-link').href = `https://wa.me/${cleanWa}`;
+
+            const cleanPhone = (currentProfile.phone || '').replace(/[^0-9]/g, '');
+            document.getElementById('btn-phone-action').href = `tel:${cleanPhone}`;
+
+            document.getElementById('btn-ig-link').href = currentProfile.ig || '#';
+            document.getElementById('btn-tt-link').href = currentProfile.tt || '#';
+            document.getElementById('btn-web-link').href = currentProfile.web || '#';
+
+            // Footer
+            document.getElementById('display-footer-right').innerText = currentProfile.brand || DEFAULT_DATA.brand;
+
+            // Theme Application
+            applyTheme(currentProfile.theme);
+
+            // Apply Graphics Settings
+            applyGraphicsSettings();
+        }
+
+        // Apply Theme Attribute
+        function applyTheme(themeName) {
+            if (themeName === 'indigo') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', themeName);
+            }
+            
+            // Highlight Selected Theme Card
+            document.querySelectorAll('.theme-card').forEach(card => card.classList.remove('active'));
+            const activeCard = document.getElementById(`theme-card-${themeName}`);
+            if (activeCard) activeCard.classList.add('active');
+        }
+
+        // Apply Graphics Options
+        function applyGraphicsSettings() {
+            const g = currentProfile.graphics;
+
+            // Particles
+            const canvas = document.getElementById('particle-canvas');
+            canvas.style.display = g.particles ? 'block' : 'none';
+
+            // Glows
+            document.getElementById('bg-glow1').style.display = g.glow ? 'block' : 'none';
+            document.getElementById('bg-glow2').style.display = g.glow ? 'block' : 'none';
+
+            // Grid
+            const grid = document.getElementById('bg-grid');
+            if (g.grid) grid.classList.add('active'); else grid.classList.remove('active');
+
+            // Mesh
+            const mesh = document.getElementById('bg-mesh');
+            if (g.mesh) mesh.classList.add('active'); else mesh.classList.remove('active');
+
+            // Set checkboxes in modal
+            document.getElementById('chk-particles').checked = g.particles;
+            document.getElementById('chk-glow').checked = g.glow;
+            document.getElementById('chk-grid').checked = g.grid;
+            document.getElementById('chk-mesh').checked = g.mesh;
+        }
+
+        // Modal Controls & Tabs
+        function openEditModal(defaultTab = 'profile') {
+            document.getElementById('input-avatar').value = currentProfile.avatar;
+            document.getElementById('modal-avatar-preview').src = currentProfile.avatar;
+            document.getElementById('input-name').value = currentProfile.name;
+            document.getElementById('input-tag').value = currentProfile.tag;
+            document.getElementById('input-bio').value = currentProfile.bio;
+            document.getElementById('input-wa').value = currentProfile.wa;
+            document.getElementById('input-phone').value = currentProfile.phone;
+            document.getElementById('input-email').value = currentProfile.email;
+            document.getElementById('input-ig').value = currentProfile.ig;
+            document.getElementById('input-tt').value = currentProfile.tt;
+            document.getElementById('input-web').value = currentProfile.web;
+            document.getElementById('input-brand').value = currentProfile.brand;
+
+            switchTab(defaultTab);
+            document.getElementById('edit-modal').classList.add('active');
+        }
+
+        function closeEditModal() {
+            document.getElementById('edit-modal').classList.remove('active');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            document.getElementById(`tab-btn-${tabName}`).classList.add('active');
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+        }
+
+        function selectTheme(themeName) {
+            currentProfile.theme = themeName;
+            applyTheme(themeName);
+        }
+
+        function toggleGraphic(key) {
+            const chk = document.getElementById(`chk-${key}`);
+            chk.checked = !chk.checked;
+            currentProfile.graphics[key] = chk.checked;
+            applyGraphicsSettings();
+        }
+
+        function updateAvatarPreview(url) {
+            if (url) {
+                document.getElementById('modal-avatar-preview').src = url;
+            }
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Image = e.target.result;
+                    document.getElementById('input-avatar').value = base64Image;
+                    document.getElementById('modal-avatar-preview').src = base64Image;
+                    showToast("Foto berhasil dimuat dari file!");
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function saveProfileChanges() {
+            currentProfile.avatar = document.getElementById('input-avatar').value.trim() || DEFAULT_DATA.avatar;
+            currentProfile.name = document.getElementById('input-name').value.trim() || DEFAULT_DATA.name;
+            currentProfile.tag = document.getElementById('input-tag').value.trim() || DEFAULT_DATA.tag;
+            currentProfile.bio = document.getElementById('input-bio').value.trim() || DEFAULT_DATA.bio;
+            currentProfile.wa = document.getElementById('input-wa').value.trim() || DEFAULT_DATA.wa;
+            currentProfile.phone = document.getElementById('input-phone').value.trim() || DEFAULT_DATA.phone;
+            currentProfile.email = document.getElementById('input-email').value.trim() || DEFAULT_DATA.email;
+            currentProfile.ig = document.getElementById('input-ig').value.trim() || DEFAULT_DATA.ig;
+            currentProfile.tt = document.getElementById('input-tt').value.trim() || DEFAULT_DATA.tt;
+            currentProfile.web = document.getElementById('input-web').value.trim() || DEFAULT_DATA.web;
+            currentProfile.brand = document.getElementById('input-brand').value.trim() || DEFAULT_DATA.brand;
+
+            // Save state
+            localStorage.setItem('digital_card_profile_v2', JSON.stringify(currentProfile));
+            
+            renderProfile();
+            closeEditModal();
+            showToast("Perubahan berhasil disimpan!");
+        }
+
+        function resetToDefault() {
+            currentProfile = JSON.parse(JSON.stringify(DEFAULT_DATA));
+            localStorage.removeItem('digital_card_profile_v2');
+            renderProfile();
+            closeEditModal();
+            showToast("Profil di-reset ke default!");
+        }
+
+        // Email Fallback Handler
+        function openEmail() {
+            let start = Date.now();
+            const targetEmail = currentProfile.email || DEFAULT_DATA.email;
+
+            window.location.href = "mailto:" + targetEmail;
+
+            setTimeout(function() {
+                if (Date.now() - start < 1000) {
+                    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${targetEmail}`, '_blank');
+                }
+            }, 500);
+        }
+
+        function copyEmail() {
+            const targetEmail = currentProfile.email || DEFAULT_DATA.email;
+            navigator.clipboard.writeText(targetEmail).then(() => {
+                showToast("Email berhasil disalin ke clipboard!");
+            }).catch(() => {
+                showToast("Email: " + targetEmail);
+            });
+        }
+
+        function copyProfileLink() {
+            if (navigator.share) {
+                navigator.share({
+                    title: `${currentProfile.name} - Kartu Nama Digital`,
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast("Tautan kartu berhasil disalin!");
+                });
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            const toastMsg = document.getElementById("toast-msg");
+            toastMsg.innerText = message;
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2500);
+        }
+
+        // Close modal on outside click
+        document.getElementById('edit-modal').addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                closeEditModal();
+            }
+        });
+
+        /* --- CANVAS PARTICLE BACKGROUND ENGINE --- */
+        function initParticles() {
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 0.5;
+                    this.speedX = (Math.random() - 0.5) * 0.4;
+                    this.speedY = (Math.random() - 0.5) * 0.4;
+                    this.opacity = Math.random() * 0.5 + 0.2;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                        this.reset();
+                    }
+                }
+                draw() {
+                    ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < 45; i++) {
+                particles.push(new Particle());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+    </script>
+</body>
+
+</html>
